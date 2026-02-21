@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+    display: inline-block; /* Allows padding and margin to be applied */
+    padding: 10px 20px; /* Adjust padding to control button size */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove default link underline */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to a hand icon on hover */
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+    </style>
+</head>
+<body>
+    <form action = "/login" method = "post">
+        <input type="text" name = "name" placeholder = "Name">
+        <input type="email" name = "email" placeholder = "Email">
+       
+        <input type="submit" value = "Login">
+
+    </form>
+    <a href = "survey.html">Take the survey</a>
+</body>
+</html>

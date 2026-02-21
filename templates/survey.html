@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+    </style>
+</head>
+<body>
+    <label for="age">Age:</label>
+    <select id="age" name="age">
+        <option value="under18">Under 18</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+         <option value="20">20</option>
+          <option value="21">21</option>
+    </select>
+    <form action="/submit_survey" method="post">
+        <label for="major">Major:</label>
+        <input type="text" id="major" name="major">
+        <input type="submit" value="Submit">
+    </form>
+    <label for="sleep_schedule">Sleep preference?</label>
+    <select id = "sleep" name = "sleep">
+        <option value="early_riser">Early Riser</option>
+        <option value="flexible">Flexible</option>
+        <option value="night_owl">Night Owl</option>
+    </select>
+    <label for ="living_preference">Living preference?</label>
+    <select id = "living_preferences" name = "living">
+        <option value="off_campus">Off-campus</option>
+        <option value="on_campus">On-campus</option>
+    </select>
+    <form action="/submit_survey" method="post">
+        <label for="building_preference">Building preference:</label>
+        <input type="text" id="building_preference" name="building_preference">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit_survey" method="post">
+        <label for="rent_min">Rent Min:500 - 1000</label>
+        <input type="text" id="rent_min" name="rent_min">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit_survey" method="post">
+        <label for="rent_max">Rent Max:500 - 1000</label>
+        <input type="text" id="rent_max" name="rent_max">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit_survey" method="post">
+        <label for="cleanliness">Cleanliness: 1-5</label>
+        <input type="text" id="cleanliness" name="cleanliness">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit_survey" method="post">
+        <label for="num_bedrooms">Number of Bedrooms: 1-5</label>
+        <input type="text" id="num_bedrooms" name="num_bedrooms">
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/submit_survey" method="post">
+        <label for="num_bathrooms">Number of Bathrooms: 1-5</label>
+        <input type="text" id="num_bathrooms" name="num_bathrooms">
+        <input type="submit" value="Submit">
+    </form>
+        <form action="/submit_survey" method="post">
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <form action = "/submit_survey" method = "post">
+        <input type="submit" value = "See Matches!">
+    </form>
+</body>
+</html>
