@@ -56,3 +56,8 @@ footer {
 .footer-icons a.active {
     color:#13294B;
 }
+
+body {
+    margin:0;
+    padding:0;
+}
