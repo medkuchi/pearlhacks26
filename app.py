@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, render_template,request, session, redirect
+from flask import Flask, render_template,request, session, redirect, jsonify
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
@@ -47,28 +47,61 @@ def swipe():
             user['score'] = match['compatibility']['score']
             user['reasoning'] = match['compatibility']['reasoning']
             users.append(user)
+
+
+        print("DEBUG: top_matches returned:", matches)
+        for u in users:
+            print(u['name'], "score:", u['score'], "reasoning:", u['reasoning'])
     else:
         users = []
     return render_template("swipe.html", users=users)
 
-
-
-@app.route("/Messages")
-def messages():
-    user1 = {
-        "name": "Aiden Park",
-        "sleep_schedule": "night_owl",
-        "cleanliness": 3,
-        "living_preference": "on_campus",
-        "rent_min": 500,
-        "rent_max": 800
-    }
-
+# POST - records the swipe
+@app.route("/Match", methods=['POST'])
+def record_swipe():
+    data = request.get_json()
     db = get_db()
-    #current_user = db.execute('SELECT * FROM users WHERE id = ?', (n_user,)).fetchone()
-    all_users = db.execute('SELECT * FROM users').fetchall()
+    db.execute('INSERT INTO swipes (swiper_id, swiped_id, direction) VALUES (?, ?, ?)',
+               (1, data['swiped_id'], data['direction']))
+    db.commit()
+    return jsonify({'status': 'ok'})
 
-    return render_template("messages.html", users=all_users)
+
+# @app.route("/Messages")
+# def messages():
+
+#     db = get_db()
+#     #current_user = db.execute('SELECT * FROM users WHERE id = ?', (n_user,)).fetchone()
+#     current_user_name = "Aiden Park"
+#     current_user = db.execute('SELECT * FROM users WHERE name = ?', (current_user_name,)).fetchone()
+
+#     # all_users = db.execute('SELECT * FROM users').fetchall()
+#     liked_users = db.execute("""
+#         SELECT * FROM users WHERE id IN (
+#             SELECT swiped_id FROM swipes
+#             WHERE swiper_id = 1 AND direction = 'accept'
+#         )
+#         """).fetchall()
+
+#     # Debug liked users
+#     return render_template("messages.html", users=liked_users)
+
+@app.route("/Messages") 
+def messages(): 
+    db = get_db() # temporary debug 
+    all_swipes = db.execute('SELECT * FROM swipes').fetchall() 
+    print("All swipes:", [dict(s) for s in all_swipes]) 
+    # liked_users = db.execute(""" SELECT * FROM users WHERE id IN ( SELECT swiped_id FROM swipes WHERE swiper_id = 1 AND direction = 'right' ) """).fetchall() 
+    liked_users = db.execute(""" SELECT * FROM users WHERE id IN ( SELECT swiped_id FROM swipes WHERE swiper_id = 1 AND direction = 'right' 
+                AND id=(
+                    SELECT MAX(id) FROM swipes s2
+                    WHERE s2.swiped_id=swipes.swiped_id
+                    AND s2.swiper_id=1
+       )
+     )
+    """).fetchall() 
+
+    return render_template("messages.html", users=liked_users)
 
 # For each chat
 @app.route("/Messages/<int:user_id>")
@@ -98,7 +131,14 @@ def handle_message(data):
 
 @app.route("/Notifications")
 def matches():
-    return render_template("matches.html")
+    db = get_db()
+    all_users = db.execute('SELECT * FROM users').fetchall()
+    
+    # randomly pick 3-5 users to show as notifications
+    num = random.randint(3, 5)
+    random_matches = random.sample(list(all_users), num)
+    
+    return render_template('matches.html', users=random_matches)
 
 @app.route("/Profile")
 def profile():

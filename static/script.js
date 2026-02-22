@@ -77,6 +77,8 @@ acceptBtn.addEventListener('click', () => flyOff('right'));
 
 function flyOff(direction) {
   const card = getTopCard();
+  console.log('card id:', card.dataset.id);
+  console.log('direction:', direction);
   const { like, nope } = getIndicators(card);
   const x = direction === 'right' ? 1200 : -1200;
   const rotate = direction === 'right' ? 30 : -30;
@@ -85,6 +87,13 @@ function flyOff(direction) {
   card.style.opacity = '0';
   like.style.opacity = 0;
   nope.style.opacity = 0;
+
+  const userId = card.dataset.id;
+  fetch('/Match', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({swiped_id: userId, direction: direction})
+  });
 
   setTimeout(() => {
     card.remove();

@@ -1,149 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:wght@700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'DM Sans', sans-serif;
-            background: #f5f5f5;
-        }
+{% extends 'base.html' %}
 
-        h2 {
-            text-align: center;
-            padding: 24px 0 12px 0;
-            font-family: 'Fraunces', serif;
-            color: #333;
-        }
+{% block head %}
+<title>Notifications</title>
+<link rel="stylesheet" href = "{{ url_for('static', filename='matches_style.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:wght@700&display=swap" rel="stylesheet"/>
+{% endblock %}
 
-        .card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            width: 30%;
-            margin: 0 auto;
-        }
 
-        .card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 4px 16px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: background 0.2s;
-        }
+{% block body %}
 
-        .card:hover {
-            background-color: #a3bfd2;
-        }
-
-        .card img {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border: 3px solid #4B9CD3;
-        }
-
-        .card span {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        hr {
-            width: 30%;
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 4px auto;
-        }
-
-        .footer-icons {
-            background-color: #4B9CD3;
-            color: white;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-icons a {
-            color: white;
-            font-size: 24px;
-            margin: 0 20px;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-icons a:hover {
-            color: #13294B;
-        }
-
-        .footer-icons a.active {
-            color: #13294B;
-        }
-        .notification-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 12px 16px;
-            background: white;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            width: 30%;
-            margin: 0 auto 10px auto;
-        }
-
-.notification-text {
-    flex: 1;
-}
-
-.notification-actions {
-    display: flex;
-    gap: 8px;
-}
-    </style>
-</head>
-<body>
-
-    <h2>Notifications</h2>
-
-    {% for user in users %}
-    <div class="notification-card">
-        <img src="{{user.profile_pic}}" alt="{{user.name}}"/>
-        <div class="notification-text">
-            <span class="">{{ user.name }}</span>
-            <p>matched with you! </p>
-        </div>
-        <div class="notification-actions">
-            <button class="btn-accept">Accept</button>
-            <button class="btn-decline">Decline</button>
-        </div>
+{% for user in users %}
+<div class="notification-card">
+    <img src="{{user.profile_pic}}" alt="{{user.name}}"/>
+    <div class="notification-text">
+        <span class="">{{ user.name }}</span>
+        <p>matched with you! </p>
     </div>
-    {% endfor %}
-
-    <div class="footer-icons">
-        <a href="{{ url_for('swipe') }}"><i class="fa-regular fa-house"></i></a>
-        <a href="{{ url_for('messages') }}" class="active"><i class="fa-solid fa-comment"></i></a>
-        <a href="{{ url_for('matches') }}"><i class="fa-regular fa-bell"></i></a>
-        <a href="{{ url_for('profile') }}"><i class="fa-regular fa-user"></i></a>
+    <div class="notification-actions">
+        <button class="btn-accept">Accept</button>
+        <button class="btn-decline">Decline</button>
     </div>
+</div>
+{% endfor %}
+{% endblock %}
 
-</body>
-</html>
 
+
+{% block footer %} 
+<div class="footer-icons">
+    <a href="{{ url_for('swipe') }}"><i class="fa-regular fa-house"></i></a>
+    <a href="{{ url_for('messages') }}"><i class="fa-regular fa-comment"></i></a>
+    <a href="{{ url_for('matches') }}" class="active"><i class="fa-solid fa-bell"></i></a>
+    <a href="{{ url_for('profile') }}"><i class="fa-regular fa-user"></i></a>
+</div>
+{% endblock%}
 
 <!-- import random
 
