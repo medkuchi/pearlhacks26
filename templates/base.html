@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel ="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script> -->
     
     {% block head %}{% endblock %}
 </head>
@@ -15,7 +13,7 @@
 <body>
     <header>
         <img src="{{ url_for('static', filename='icons/unc_white_well_logo_transparent.png') }}" id="logo" alt="UNC Logo">
-        <p>UNC  </p>
+        <p>UNC</p>
         <div class="verticalLine">HeelHome</div>
     </header>
     {% block body %}{% endblock %}
