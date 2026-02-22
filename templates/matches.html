@@ -1,0 +1,10 @@
+<h1>Matches Page</h1>
+{% if matches %}
+    <ul>
+    {% for match in matches %}
+        <li>{{ match.name }} - {{ match.major }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No matches yet. This is a placeholder!</p>
+{% endif %}
