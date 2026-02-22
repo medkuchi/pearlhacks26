@@ -40,8 +40,6 @@ footer {
     display:flex;
     justify-content: center;
     padding: 20px;
-    /*position: fixed;*/
-
 }
 .footer-icons a {
     color: white;

@@ -8,50 +8,80 @@
 
 <!-- body -->
 {% block body %}
-<div id = "chat"></div>
-<div id = "chat-input">
-<input id = "message" type = "text">
-<button onclick="sendMessage()">Send</button>
+<div class = "content">
+        <div id = "chat"></div>
+        <div id = "chat-input">
+        <input id = "message" type = "text">
+        <button onclick="sendMessage()">Send</button>
+        </div>
 </div>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 
 <script>
-
 const socket = io();
-
 const room = "{{ room }}";
-const username = "{{current_user}}"
+const username = "{{ current_user }}";
 
-
-socket.on("connect",function(){
+socket.on("connect", function() {
     socket.emit("join", { room: room });
 });
 
-
-function sendMessage(){
-
-    const msg = document.getElementById("message").value;
+function sendMessage() {
+    const input = document.getElementById("message");
+    const msg = input.value;
 
     socket.emit("send_message", {
-
         room: room,
         username: username,
         message: msg
-
     });
-    msg.value = "";
+
+    input.value = "";
 }
 
-socket.on("message", function(data){
+socket.on("message", function(data) {
     const chat = document.getElementById("chat");
-
-    chat.innerHTML += "<p>" + data.username + ": "+ data.message + "</p>";
-    console.log(msg);
-
+    chat.innerHTML += "<p>" + data.username + ": " + data.message + "</p>";
+    console.log(data);
 });
-
 </script>
+
+<!-- <script>
+        const socket = io();
+
+        const room = "{{ room }}";
+        const username = "{{current_user}}"
+
+
+        socket.on("connect",function(){
+        socket.emit("join", { room: room });
+        });
+
+
+        function sendMessage(){
+
+        const msg = document.getElementById("message").value;
+
+        socket.emit("send_message", {
+
+                room: room,
+                username: username,
+                message: msg
+
+        });
+        msg.value = "";
+        }
+
+        socket.on("message", function(data){
+        const chat = document.getElementById("chat");
+
+        chat.innerHTML += "<p>" + data.username + ": "+ data.message + "</p>";
+        console.log(msg);
+
+        });
+
+</script> -->
 
 <!-- <script>
         const socket = io();
