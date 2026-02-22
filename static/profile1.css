@@ -1,0 +1,13 @@
+.profile-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#bf6f6f;
+}
+
+img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit:cover;
+}
