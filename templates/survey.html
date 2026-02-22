@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        background-color: #add8e6;
+    }
+    .survey-grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px;
+    width: 400px;
+    margin: 50px auto;
+    
+    }
+    select {
+    display: inline-block;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-color: white;
+
+    }
+
+    input {
+    display: inline-block;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 1px 1px 8px rgba(110, 157, 173, 0.2);
+
+    }
+    input[type="submit"] {
+    background-color: white;
+    color: #add8e6;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    }
+    input[type="submit"]:hover {
+    background-color: #a3bfd2;
+    color: white;
+    }
+
+    label {
+    display: inline-block;
+    margin-bottom: 5px;
+    
+    align-items: center;
+    font-family: "Gaegu", cursive;
+    }
+    
+
+    
+    #age {
+    display: block;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;    
+    border-radius: 10px;
+    border: 1px solid white;
+    
+    }
+        textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+h1 {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-weight: lighter;
+}
+    </style>
+</head>
+<body>
+    <h1>Fill out the survey!</h1>
+    <div class="survey-grid">
+    <form action="/submit_survey" method="post">
+    <label for="age">Age:</label>
+    <select id="age" name="age" aria-placeholder="Age">
+        <option value="under18">Under 18</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+         <option value="20">20</option>
+          <option value="21">21</option>
+    </select>
+    
+        <label for="major">Major:</label>
+        <div class = "container">
+        <input type="text" id="major" name="major">
+        
+        </div>
+    
+    <label for="sleep_schedule">Sleep preference?</label>
+    <select id = "sleep" name = "sleep">
+        <option value="early_riser">Early Riser</option>
+        <option value="flexible">Flexible</option>
+        <option value="night_owl">Night Owl</option>
+    </select>
+    <label for ="living_preference">Living preference?</label>
+    <select id = "living_preferences" name = "living">
+        <option value="off_campus">Off-campus</option>
+        <option value="on_campus">On-campus</option>
+    </select>
+   
+        <label for="building_preference">Building preference:</label>
+        <div class = "container">
+        <input type="text" id="building_preference" name="building_preference">
+        
+        </div>
+   
+    
+        <label for="rent_min">Rent Min:500 - 1000</label>
+        <div class = "container">
+        <input type="text" id="rent_min" name="rent_min">
+        
+        </div>
+    
+   
+        <label for="rent_max">Rent Max:500 - 1000</label>
+        <div class = "container">
+        <input type="text" id="rent_max" name="rent_max">
+        
+        </div>
+    
+    
+        <label for="cleanliness">Cleanliness: 1-5</label>
+        <div class = "container">
+        <input type="text" id="cleanliness" name="cleanliness">
+        
+        </div>
+    
+    
+        <label for="num_bedrooms">Number of Bedrooms: 1-5</label>
+        <div class = "container">
+        <input type="text" id="num_bedrooms" name="num_bedrooms">
+        
+        </div>
+    
+    
+        <label for="num_bathrooms">Number of Bathrooms: 1-5</label>
+        <div class = "container">
+        <input type="text" id="num_bathrooms" name="num_bathrooms">
+        
+        </div>
+    
+       
+        <label for="bio">Bio:</label>
+        <div class = "container">
+        <textarea id="bio" name="bio"></textarea>
+        
+        </div>
+    
+        <input type="submit" value = "See Matches!">
+    </form>
+    
+</body>
+</html>
