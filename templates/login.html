@@ -1,95 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    body {
-        background-color: #add8e6;
-    }
-    input[type="submit"] {
-    display: inline-block; 
-    padding: 10px 20px; 
-    background-color: #add8e6; 
-    color: white; 
-    text-align: center; 
-    text-decoration: none; 
-    border: none; 
-    border-radius: 5px;
-    cursor: pointer; 
-    font-size: 16px;
-}
+{% extends 'base.html' %}
 
-input[type="submit"]:hover {
-    background-color: black; 
-}
 
-input[type="text"], input[type="email"] {
-    display: flex;  
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    height: 20px;
-    width: 250px;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid white;
-    box-shadow: 1px 1px 8px rgba(110, 157, 173, 0.2);
-    margin-bottom: 10px;
-}
+{% block head %}
+<link rel="stylesheet" href = "{{ url_for('static', filename='login_style.css')}}" />
+<title>Login</title>
+{% endblock %}
 
-label {
-    display: block;
-    font-family: "Gaegu", cursive;
-    font-weight: lighter;
 
-}
-input[type="submit"] {
-    display: inline-block; 
-    padding: 10px 20px; 
-    background-color: #add8e6; 
-    color: white; 
-    text-align: center; 
-    text-decoration: none; 
-    border: none; 
-    border-radius: 5px;
-    cursor: pointer; 
-    font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #284b63;
-}
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-h1 {
-    font-family: "Gaegu", cursive;
-    font-weight: lighter;
-}
-
-    </style>
-</head>
-<body>
-    <div class = "container">
-    <h1>Login</h1>
-    <form action = "/login" method = "post">
-        <label for = "name">Name:</label>
-        <input type="text" name = "name" placeholder = "Name">
-        <label for = "email">Email:</label>
-        <input type="email" name = "email" placeholder = "Email">
-       
-        <input type="submit" value="Login">
-
-    </form>
-    </div>
+{% block body %}
+<div class = "container">
+<h1>Login</h1>
+<!-- <form action = "/login" method = "post"> -->
+<form>
+    <label for = "name">Name:</label>
+    <input type="text" name = "name" placeholder = "Name">
+    <label for = "email">Email:</label>
+    <input type="email" name = "email" placeholder = "Email">
     
-</body>
-</html>
+    <!-- <input type="submit" value="Login" href = "{{ url_for('survey')}}"> -->
+    <a href = "{{ url_for('survey')}}" class = "btn-link">Submit</a>
+
+</form>
+</div>
+{% endblock %}

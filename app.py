@@ -16,6 +16,14 @@ app.config["SECRET_KEY"] = "abc123"
 socketio = SocketIO(app)
 
 @app.route("/")
+def login():
+    return render_template("login.html")
+
+@app.route("/InformationForm")
+def survey():
+    return render_template("survey.html")
+
+@app.route("/Match")
 def swipe():
     user1 = {
         "name": "Aiden Park",
