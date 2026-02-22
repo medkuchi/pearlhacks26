@@ -7,11 +7,6 @@ from matching import top_matches
 app = Flask(__name__)
 app.secret_key = 'pearlhacks2026'
 
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-
-#change this to ("/")
 @app.route("/")
 def swipe():
 
@@ -30,15 +25,6 @@ def swipe():
     all_users = db.execute('SELECT * FROM users').fetchall()
 
     matches = top_matches(user1, all_users)
-    
-    # if matches:
-    #     top = matches[0] #top is a dictionary
-    #     user = dict(top['user']) 
-    #     user['score'] = top['compatibility']['score']
-    #     user['reasoning'] = top['compatibility']['reasoning']
-    # else:
-    #     user = None
-
 
     if matches:
         users = []
