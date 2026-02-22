@@ -3,14 +3,16 @@
 
 {% block head %}
 <title>Chat</title>
-<link rel="stylesheet" href = "{{ url_for('static', filename='messages_style.css')}}">
+<link rel="stylesheet" href = "{{ url_for('static', filename='chat.css')}}">
 {% endblock %}
 
 <!-- body -->
 {% block body %}
 <div id = "chat"></div>
+<div id = "chat-input">
 <input id = "message" type = "text">
 <button onclick="sendMessage()">Send</button>
+</div>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 
 
