@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Chat</title>
+<link rel="stylesheet" href = "{{ url_for('static', filename='chat.css')}}">
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<div class = "content">
+        <div id = "chat"></div>
+        <div id = "chat-input">
+        <input id = "message" type = "text">
+        <button onclick="sendMessage()">Send</button>
+        </div>
+</div>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+
+<script>
+const socket = io();
+const room = "{{ room }}";
+const username = "{{ current_user }}";
+
+socket.on("connect", function() {
+    socket.emit("join", { room: room });
+});
+
+function sendMessage() {
+    const input = document.getElementById("message");
+    const msg = input.value;
+
+    socket.emit("send_message", {
+        room: room,
+        username: username,
+        message: msg
+    });
+
+    input.value = "";
+}
+
+socket.on("message", function(data) {
+    const chat = document.getElementById("chat");
+    chat.innerHTML += "<p>" + data.username + ": " + data.message + "</p>";
+    console.log(data);
+});
+</script>
+{% endblock %}
+
+
+<!-- footer -->
+{% block footer %} 
+<div class = "footer-icons">
+        <a href = "{{ url_for('swipe')}}"><i class = "fa-regular fa-house"></i></a>
+        <a href = "{{ url_for('messages')}}" class = "active"><i class = "fa-solid fa-comment"></i></a>
+        <a href = "{{ url_for('matches')}}"><i class = "fa-regular fa-bell"></i></a>
+        <a href = "{{ url_for('profile')}}"><i class = "fa-regular fa-user"></i></a>
+</div>
+{% endblock%}

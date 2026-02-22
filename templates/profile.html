@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<head>
+    <title>Aiden's Profile</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename='profile_style.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:wght@700&display=swap" rel="stylesheet"/>
+</head>
+{% endblock %}
+
+{% block body %}
+<hr></hr>
+<div class="content">
+    <div class="profile-header">
+    <img src="https://i.pravatar.cc/150?img=1" alt="Aiden Park"/>
+    <h1>Aiden Park</h1>
+    <h3>18 · Freshman · Computer Science</h3>
+    <div class="sbox">
+        <h3>About me</h3>
+        <p>Hi! I'm Aiden, a freshman at UNC studying Computer Science. I love coding, gaming, and exploring the town
+                    . I'm looking for a roommate who's clean, respectful, and shares similar interests. Let's find the perfect place together!</p>
+        </div>
+        <h3>Preferences</h3>
+        <div class="preferences-row">
+            <div class="hbox">
+                <h4>Budget</h4>
+                <p>$500-$700/month</p>
+                <h4>Bedrooms & Bathrooms</h4>
+                <p>2 bed · 2 bath</p>
+            </div>
+            <div class="hbox">
+                <h4>On/Off Campus</h4>
+                <p>On-Campus</p>
+                <h4>Preferred Building</h4>
+                <p>Eringhaus</p>
+                
+            </div>
+
+        </div>
+        <h3>Lifestyle</h3>
+        <div class="hbox">
+                <h4>Cleanliness</h4>
+                <p>3/5</p>
+                <h4>Sleep Schedule</h4>
+                <p>Night owl</p>
+            </div>
+        <div class="edit-btn-container">
+            <button class="edit-profile-btn">Edit Profile</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- footer -->
+{% block footer %} 
+<div class = "footer-icons">
+        <a href = "{{ url_for('swipe')}}"><i class = "fa-regular fa-house"></i></a>
+        <a href = "{{ url_for('messages')}}" ><i class = "fa-regular fa-comment"></i></a>
+        <a href = "{{ url_for('matches')}}"><i class = "fa-regular fa-bell"></i></a>
+        <a href = "{{ url_for('profile')}}" class = "active"><i class = "fa-solid fa-user"></i></a>
+</div>
+{% endblock%}

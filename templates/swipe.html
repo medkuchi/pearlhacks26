@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Find Your Perfect Roommate</title>
+  <link rel="stylesheet" href = "{{ url_for('static', filename='swipe_style.css')}}">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:wght@700&display=swap" rel="stylesheet"/>
+{% endblock %}
+
+<!-- Body Paragraph -->
+{% block body %}
+<div class="no-more" id="noMore">
+    <div class="emoji">😢</div>
+    <h3>End of pile... Come back later!</h3>
+    <p>Check back later for more roommate matches!</p>
+  </div>
+
+  <div class="card-stack" id="cardStack">
+    {% for user in users %}
+    <div class="card" id="currentCard" data-id="{{user.id}}">
+
+      <img src="{{user.profile_pic}}" alt="{{user.name}}"/>
+
+      <div class="like-indicator" id="likeIndicator">ROOMIE!</div>
+      <div class="nope-indicator" id="nopeIndicator">NOPE</div>
+
+      <button class="info-btn" id="infoBtn">ⓘ</button>
+
+      <div class="card-overlay">
+        <div class="card-info">
+          <h2>{{user.name}}, {{user.age}}</h2>
+          <div class="detail">🎓 {{user.year}} · {{user.major}}</div>
+          <div class="detail">💤 {{user.sleep_schedule}}</div>
+          <div class="detail">💰﹩{{user.rent_min}}–${{user.rent_max}}/month</div>
+          <div class="detail">🏠 {{user.living_preference}} · {{user.building_preference}}</div>
+        </div>
+        <div class="compatibility-badge">{{user.score}}% Match</div>
+      </div>
+
+      <div class="info-panel" id="infoPanel">
+        <button class="close-btn" id="closeBtn">✕</button>
+        <h3>{{user.name}}</h3>
+        <p class="bio-text">{{user.bio}}</p>
+        <div class="info-row"><label>Cleanliness</label><span>{{user.cleanliness}}/5</span></div>
+        <div class="info-row"><label>Bedrooms / Bathrooms</label><span>{{user.num_bedrooms}} bed · {{user.num_bathrooms}} bath</span></div>
+        <div class="info-row"><label>Building Preference</label><span>{{user.building_preference}}</span></div>
+        <div class="info-row"><label>Why you match</label><span>{{user.reasoning}}</span></div>
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="action-buttons" id="actionButtons">
+    <button class="btn-reject" id="rejectBtn">✕</button>
+    <button class="btn-accept" id="acceptBtn">♥</button>
+  </div>
+{% endblock %}
+
+
+{% block footer %} 
+<div class = "footer-icons">
+        <a href = "#" class = "active"><i class = "fa-solid fa-house"></i></a>
+        <a href = "{{ url_for('messages')}}" ><i class = "fa-regular fa-comment"></i></a>
+        <a href = "{{ url_for('matches')}}"><i class = "fa-regular fa-bell"></i></a>
+        <a href = "{{ url_for('profile')}}"><i class = "fa-regular fa-user"></i></a>
+</div>
+{% endblock%}

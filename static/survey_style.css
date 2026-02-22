@@ -1,0 +1,132 @@
+/*********** header *************/
+header {
+    background-color: #4B9CD3;
+    display: flex;
+    width:100%;
+    
+    color: white;
+    align-items: center;
+    
+    gap:5px;
+
+    padding-left: 1%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+
+    font-family: Arial;
+    font-size: 20px;
+
+    #logo {
+        border-radius: 80%;
+        width: 75px;
+        height: 75px; 
+    }
+}
+.verticalLine {
+    border-left: solid white;
+    padding-left: 10px;
+    padding-right:2px;
+    height:40px;
+    display:flex;
+    align-items: center;
+    font-size:18px;
+}
+
+
+/*********** body *************/
+body {
+    background-color: #add8e6;
+}
+.survey-grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px;
+    width: 400px;
+    margin: 50px auto;
+}
+select {
+    display: inline-block;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-color: white;
+}
+
+input {
+    display: inline-block;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 1px 1px 8px rgba(110, 157, 173, 0.2);
+}
+input[type="submit"] {
+    background-color: white;
+    color: #add8e6;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+input[type="submit"]:hover {
+    background-color: #a3bfd2;
+    color: white;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    
+    align-items: center;
+    font-family: "Gaegu", cursive;
+}
+    
+
+    
+#age {
+    display: block;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;    
+    border-radius: 10px;
+    border: 1px solid white;
+    
+}
+    textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+h1 {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-weight: lighter;
+}
+
+
+/** button **/
+.btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4B9CD3;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-link:hover {
+    background-color: #13294B;
+}

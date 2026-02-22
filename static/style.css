@@ -1,0 +1,61 @@
+header {
+    background-color: #4B9CD3;
+    display: flex;
+    
+    color: white;
+    align-items: center;
+    
+    gap:5px;
+
+    padding-left: 1%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+
+    font-family: Arial;
+    font-size: 20px;
+
+    #logo {
+        border-radius: 80%;
+        width: 75px;
+        height: 75px; 
+    }
+}
+
+.verticalLine {
+    border-left: solid white;
+    padding-left: 10px;
+    padding-right:2px;
+    height:40px;
+    display:flex;
+    align-items: center;
+    font-size:18px;
+}
+
+
+/************** Footer ****************/
+footer {
+    background-color:#4B9CD3;
+    color: white;
+    display:flex;
+    justify-content: center;
+    padding: 20px;
+}
+.footer-icons a {
+    color: white;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.footer-icons a:hover {
+    color:#13294B;
+}
+
+.footer-icons a.active {
+    color:#13294B;
+}
+
+body {
+    margin:0;
+    padding:0;
+}

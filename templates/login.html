@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href = "{{ url_for('static', filename='login_style.css')}}" />
+<title>Login</title>
+{% endblock %}
+
+
+{% block body %}
+<div class = "container">
+<h1>Login</h1>
+<!-- <form action = "/login" method = "post"> -->
+<form>
+    <label for = "name">Name:</label>
+    <input type="text" name = "name" placeholder = "Name">
+    <label for = "email">Email:</label>
+    <input type="email" name = "email" placeholder = "Email">
+    
+    <!-- <input type="submit" value="Login" href = "{{ url_for('survey')}}"> -->
+    <a href = "{{ url_for('survey')}}" class = "btn-link">Submit</a>
+
+</form>
+</div>
+{% endblock %}
