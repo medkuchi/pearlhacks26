@@ -60,8 +60,8 @@
 {% block footer %} 
 <div class = "footer-icons">
         <a href = "#" class = "active"><i class = "fa-solid fa-house"></i></a>
-        <a href = "#" ><i class = "fa-regular fa-comment"></i></a>
-        <a href = "#"><i class = "fa-regular fa-bell"></i></a>
-        <a href = "#"><i class = "fa-regular fa-user"></i></a>
+        <a href = "{{ url_for('messages')}}" ><i class = "fa-regular fa-comment"></i></a>
+        <a href = "{{ url_for('matches')}}"><i class = "fa-regular fa-bell"></i></a>
+        <a href = "{{ url_for('profile')}}"><i class = "fa-regular fa-user"></i></a>
 </div>
 {% endblock%}

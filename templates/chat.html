@@ -2,13 +2,83 @@
 
 {% block head %}
 <title>Chat</title>
+<link rel="stylesheet" href = "{{ url_for('static', filename='messages_style.css')}}">
 {% endblock %}
 
+<!-- body -->
+{% block body %}
+<div id = "chat"></div>
+<input id = "message" type = "text">
+<button onclick="sendMessage()">Send</button>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+
+<script>
+
+const socket = io();
+
+const room = "{{ room }}";
+const username = "{{current_user}}"
+
+
+socket.on("connect",function(){
+    socket.emit("join", { room: room });
+});
+
+
+function sendMessage(){
+
+    const msg = document.getElementById("message").value;
+
+    socket.emit("send_message", {
+
+        room: room,
+        username: username,
+        message: msg
+
+    });
+    msg.value = "";
+}
+
+socket.on("message", function(data){
+    const chat = document.getElementById("chat");
+
+    chat.innerHTML += "<p>" + data.username + ": "+ data.message + "</p>";
+    console.log(msg);
+
+});
+
+</script>
+
+<!-- <script>
+        const socket = io();
+
+
+        const chat = document.getElementById("chat");
+        socket.on("connect",function(){
+                chat.innerHTML += "<p>Connected </p>";
+        });
+
+        function sendMessage() {
+                const input = document.getElementById("message");
+                socket.send(input.value);
+                input.value = "";
+        }
+
+        socket.on("message", function(msg) {
+                chat.innerHTML += "<p>" + msg + "</p>"
+        });
+</script> -->
+
+{% endblock %}
+
+
+<!-- footer -->
 {% block footer %} 
 <div class = "footer-icons">
-        <a href = "#"><i class = "fa-regular fa-house"></i></a>
-        <a href = "#" class = "active"><i class = "fa-regular fa-comment"></i></a>
-        <a href = "#"><i class = "fa-regular fa-bell"></i></a>
-        <a href = "#"><i class = "fa-regular fa-user"></i></a>
+        <a href = "{{ url_for('swipe')}}"><i class = "fa-regular fa-house"></i></a>
+        <a href = "{{ url_for('messages')}}" class = "active"><i class = "fa-solid fa-comment"></i></a>
+        <a href = "{{ url_for('matches')}}"><i class = "fa-regular fa-bell"></i></a>
+        <a href = "{{ url_for('profile')}}"><i class = "fa-regular fa-user"></i></a>
 </div>
 {% endblock%}
