@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Messages</title>
+<link rel="stylesheet" href = "{{ url_for('static', filename='messages_style.css')}}">
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+
+<h2>Messages</h2>
+{% for user in users %}
+<div>
+        <!-- <div class="card" id="currentCard" data-id="{{user.id}}">
+                <img src="{{user.profile_pic}}" alt="{{user.name}}"/>
+                <a href="{{ url_for('chat',user_id=user.id)}}">
+                        {{user.name}}
+                </a>      
+        </div> -->
+        <a href = "{{ url_for('chat', user_id = user.id)}}" class = "card-link">
+                <div class="card" id="currentCard" data-id="{{user.id}}">
+                        <img src="{{user.profile_pic}}" alt="{{user.name}}"/>
+                        <!-- <a href="{{ url_for('chat',user_id=user.id)}}">
+                                {{user.name}}
+                        </a>       -->
+                        <span>{{user.name}}</span>
+                </div>
+        </a>
+        <hr></hr>
+</div>
+
+{% endfor %}
+
+{% endblock %}
+
+
+<!-- footer -->
+{% block footer %} 
+<div class = "footer-icons">
+        <a href = "{{ url_for('swipe')}}"><i class = "fa-regular fa-house"></i></a>
+        <a href = "{{ url_for('messages')}}" class = "active"><i class = "fa-solid fa-comment"></i></a>
+        <a href = "{{ url_for('matches')}}"><i class = "fa-regular fa-bell"></i></a>
+        <a href = "{{ url_for('profile')}}"><i class = "fa-regular fa-user"></i></a>
+</div>
+{% endblock%}
