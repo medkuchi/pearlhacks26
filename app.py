@@ -33,7 +33,6 @@ def swipe():
         "rent_min": 500,
         "rent_max": 800
     }
-
     db = get_db()
     n_user = session.get('n_user', 1)
     #current_user = db.execute('SELECT * FROM users WHERE id = ?', (n_user,)).fetchone()
