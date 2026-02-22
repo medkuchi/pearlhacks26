@@ -5,33 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .button {
-    display: inline-block; /* Allows padding and margin to be applied */
-    padding: 10px 20px; /* Adjust padding to control button size */
-    background-color: #007bff; /* Button background color */
-    color: white; /* Text color */
-    text-align: center; /* Center the text */
-    text-decoration: none; /* Remove default link underline */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to a hand icon on hover */
+    body {
+        background-color: #add8e6;
+    }
+    input[type="submit"] {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #add8e6; 
+    color: white; 
+    text-align: center; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
     font-size: 16px;
 }
 
-.button:hover {
-    background-color: #0056b3; /* Darker color on hover */
+input[type="submit"]:hover {
+    background-color: black; 
+}
+
+input[type="text"], input[type="email"] {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    height: 20px;
+    width: 250px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 1px 1px 8px rgba(110, 157, 173, 0.2);
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-family: "Gaegu", cursive;
+    font-weight: lighter;
+
+}
+input[type="submit"] {
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #add8e6; 
+    color: white; 
+    text-align: center; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #284b63;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+h1 {
+    font-family: "Gaegu", cursive;
+    font-weight: lighter;
 }
 
     </style>
 </head>
 <body>
+    <div class = "container">
+    <h1>Login</h1>
     <form action = "/login" method = "post">
+        <label for = "name">Name:</label>
         <input type="text" name = "name" placeholder = "Name">
+        <label for = "email">Email:</label>
         <input type="email" name = "email" placeholder = "Email">
        
-        <input type="submit" value = "Login">
+        <input type="submit" value="Login">
 
     </form>
-    <a href = "survey.html">Take the survey</a>
+    </div>
+    
 </body>
 </html>
