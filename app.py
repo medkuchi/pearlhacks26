@@ -67,25 +67,6 @@ def record_swipe():
     return jsonify({'status': 'ok'})
 
 
-# @app.route("/Messages")
-# def messages():
-
-#     db = get_db()
-#     #current_user = db.execute('SELECT * FROM users WHERE id = ?', (n_user,)).fetchone()
-#     current_user_name = "Aiden Park"
-#     current_user = db.execute('SELECT * FROM users WHERE name = ?', (current_user_name,)).fetchone()
-
-#     # all_users = db.execute('SELECT * FROM users').fetchall()
-#     liked_users = db.execute("""
-#         SELECT * FROM users WHERE id IN (
-#             SELECT swiped_id FROM swipes
-#             WHERE swiper_id = 1 AND direction = 'accept'
-#         )
-#         """).fetchall()
-
-#     # Debug liked users
-#     return render_template("messages.html", users=liked_users)
-
 @app.route("/Messages") 
 def messages(): 
     db = get_db() # temporary debug 
