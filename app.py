@@ -9,7 +9,6 @@ app.secret_key = 'pearlhacks2026'
 
 @app.route("/")
 def swipe():
-
     user1 = {
         "name": "Aiden Park",
         "sleep_schedule": "night_owl",
