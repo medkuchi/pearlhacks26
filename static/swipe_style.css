@@ -52,7 +52,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0px;
+    margin:0px;
 }
 
 /* NAV */
@@ -127,6 +128,11 @@ nav {
     box-shadow: 0 20px 60px rgba(0,0,0,0.18);
     user-select: none;
     cursor: grab;
+    display:none;
+}
+
+.card:last-child{
+    display: block;
 }
 
 .card:active { cursor: grabbing; }

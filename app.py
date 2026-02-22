@@ -14,21 +14,42 @@ app.secret_key = 'pearlhacks2026'
 #change this to ("/")
 @app.route("/")
 def swipe():
+
+    user1 = {
+        "name": "Aiden Park",
+        "sleep_schedule": "night_owl",
+        "cleanliness": 3,
+        "living_preference": "on_campus",
+        "rent_min": 500,
+        "rent_max": 800
+    }
+
     db = get_db()
     n_user = session.get('n_user', 1)
-    current_user = db.execute('SELECT * FROM users WHERE id = ?', (n_user,)).fetchone()
+    #current_user = db.execute('SELECT * FROM users WHERE id = ?', (n_user,)).fetchone()
     all_users = db.execute('SELECT * FROM users').fetchall()
 
-    matches = top_matches(current_user, all_users)
+    matches = top_matches(user1, all_users)
     
+    # if matches:
+    #     top = matches[0] #top is a dictionary
+    #     user = dict(top['user']) 
+    #     user['score'] = top['compatibility']['score']
+    #     user['reasoning'] = top['compatibility']['reasoning']
+    # else:
+    #     user = None
+
+
     if matches:
-        top = matches[0]
-        user = dict(top['user'])
-        user['score'] = top['compatibility']['score']
-        user['reasoning'] = top['compatibility']['reasoning']
+        users = []
+        for match in matches:
+            user = dict(match['user']) 
+            user['score'] = match['compatibility']['score']
+            user['reasoning'] = match['compatibility']['reasoning']
+            users.append(user)
     else:
-        user = None
-    return render_template("swipe.html", user=user)
+        users = []
+    return render_template("swipe.html", users=users)
 
 @app.route("/Messages")
 def chat():

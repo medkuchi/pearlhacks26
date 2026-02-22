@@ -15,9 +15,10 @@
   </div>
 
   <div class="card-stack" id="cardStack">
+    {% for user in users %}
     <div class="card" id="currentCard" data-id="{{user.id}}">
 
-      <img src="{{user.image}}" alt="{{user.name}}"/>
+      <img src="{{user.profile_pic}}" alt="{{user.name}}"/>
 
       <div class="like-indicator" id="likeIndicator">ROOMIE!</div>
       <div class="nope-indicator" id="nopeIndicator">NOPE</div>
@@ -32,7 +33,7 @@
           <div class="detail">💰﹩{{user.rent_min}}–${{user.rent_max}}/month</div>
           <div class="detail">🏠 {{user.living_preference}} · {{user.building_preference}}</div>
         </div>
-        <div class="compatibility-badge">{{user.compatibility}}% Match</div>
+        <div class="compatibility-badge">{{user.score}}% Match</div>
       </div>
 
       <div class="info-panel" id="infoPanel">
@@ -46,6 +47,7 @@
       </div>
 
     </div>
+    {% endfor %}
   </div>
 
   <div class="action-buttons" id="actionButtons">

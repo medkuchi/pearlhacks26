@@ -44,37 +44,14 @@ def get_compatibility(user1,user2):
 def top_matches(current_user, all_users):
     results = []
     for user in all_users:
-        if user['name']==current_user['name']:
+        if user['name']== current_user['name']: 
             continue
-        if user['name'] != current_user['name']:
-            compatibility = get_compatibility(current_user, user)
+        if user['name'] != current_user['name']: 
+            compatibility = get_compatibility(current_user, user) #CHANGED TO USER 1 (before: current_user)
               
+            if compatibility['score'] >= 10:
+                #results.append({"user": user, "compatibility": compatibility['score'], "reason": compatibility['reasoning']})  
+                results.append({"user": user, "compatibility": compatibility}) 
+                results.sort(key=lambda x: x['compatibility']['score'], reverse=False)
 
-            if compatibility['score'] >= 75:
-                results.append({"user": user, "compatibility": compatibility, "reason": compatibility['reasoning']})  
-
-                results.sort(key=lambda x: x['compatibility']['score'], reverse=True)
-
-        return results 
-    
-
-    # temporary test - delete this later
-user1 = {
-    "name": "Aiden Park",
-    "sleep_schedule": "night_owl",
-    "cleanliness": 3,
-    "living_preference": "on_campus",
-    "rent_min": 500,
-    "rent_max": 800
-}
-
-user2 = {
-    "name": "Maya Patel",
-    "sleep_schedule": "early_riser",
-    "cleanliness": 5,
-    "living_preference": "on_campus",
-    "rent_min": 500,
-    "rent_max": 750
-}
-
-print(get_compatibility(user1, user2))
+    return results 
